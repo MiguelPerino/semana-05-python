@@ -9,8 +9,8 @@ def eh_primo(a: int) -> int:
         return False
 
 num = int(input('Informe um número para verificar se é primo ou não: '))
-print('True = Primo, False = Não é primo')
-
+print('True = Primo\nFalse = Não é primo')
+print()
 print(eh_primo(num))
 
-input('Pressione Enter para fehcar o programa...')    
+input('\nPressione Enter para fehcar o programa...')    
