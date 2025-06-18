@@ -1,20 +1,11 @@
 def diagonal_principal (matriz):
-    #Começa como sendo verdadeira, ou seja, ela ja é quadratica
-    eh_quadrada = True
-    #Se for vazia ela vira false, que nao é quadratica
+
     if len(matriz) == 0:
-        #return []
-        eh_quadrada = False
-    #Verifica se a coluna é diferente de linha entao por exemplo se tiver mais coluna em uma linha do que na outra
+        raise ValueError ('Valores de entrada inválidos!')
+
     for linha in matriz:
         if len(linha) != len(matriz):
-            '''if len(linha) != len(matriz):
-            return []'''
-            eh_quadrada = False
-            break
-    #Se nao for quadrada, vai returnar lista vazia
-    if not eh_quadrada:
-        return []
+            raise ValueError ('A matriz não é quadrada!')
     else:
         #Aqui returna os elementos da diagonal principal
         dg_princ = []
@@ -22,25 +13,30 @@ def diagonal_principal (matriz):
             dg_princ.append(matriz[i][i])
         return dg_princ
         
+try:
+    l = int(input('Informe o tamanho da linha da matriz: '))
+    c = int(input('Informe o tamanho da coluna da matriz: '))
+    print()
 
-n = int(input('Informe o tamanho da matriz quadrada (N X N): '))
-print()
+    matriz_quadratica = []
+    if l != c or l == 0 or c == 0:
+        print('Matriz não quadrada!')
+    else:
+        for i in range((l)):
+            linha = []
+            for j in range((c)):
+                linha.append(float(input(f'Informe o valor da linha [{i + 1}] e coluna [{j + 1}]: ')))
+            matriz_quadratica.append(linha)
 
-matriz_quadratica = []
-for i in range((n)):
-    linha = []
-    for j in range((n)):
-        linha.append(float(input(f'Informe o valor da linha [{i + 1}] e coluna [{j + 1}]: ')))
-    matriz_quadratica.append(linha)
+        print('\n Matriz informada: ')
+        for i in range(l):
+                for j in range(c):
+                    print(f'{matriz_quadratica[i][j]:7}', end = '')
+                print()
 
-print('\n Matriz informada: ')
-for i in range(n):
-        for j in range(n):
-            print(f'{matriz_quadratica[i][j]:7}', end = '')
         print()
+        resultado = diagonal_principal(matriz_quadratica)
+        print('As diagonais principais da sua matriz é:', resultado)
 
-print()
-resultado = diagonal_principal(matriz_quadratica)
-print('As diagonais principais da sua matriz é:', resultado)
-
-input('\nPressione Enter para fechar o programa...')
+except ValueError as e:
+    print(f'Erro: {e}')
