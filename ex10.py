@@ -31,16 +31,17 @@ try:
         matriz_0_1.append(linha)
 
     print()
-    print('Matriz formada: ')   #Matriz arrumada
+   
+    resultado = identica_cruz(matriz_0_1)
+    print('Matriz formada:')
     for i in range(l):
         for j in range(c):
-            print(f'{matriz_0_1[i][j]:4}', end = '')
+            if (i, j) in resultado:
+                print(f'\033[92m{matriz_0_1[i][j]:4}\033[0m', end='')  
+            else:
+                print(f'{matriz_0_1[i][j]:4}', end='')
         print()
-
-    resultado = identica_cruz(matriz_0_1)
     print(f'As posições dos pontos centrais das cruzes formadas são: {resultado}')
-
+    
 except ValueError as e:
     print(f'Erro: {e}')
-
-input('\nPressione Enter para fechar o programa...')
