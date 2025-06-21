@@ -15,8 +15,7 @@ def matriz_caractere(matriz):
             for j in range(len(matriz[i])):
                 if matriz[i][j] == letras_encontradas[letra]:
                     cont += 1
-        lista_calculada.append(letras_encontradas[letra])
-        lista_calculada.append(cont)
+        lista_calculada.append((letras_encontradas[letra], cont))
 
     return lista_calculada
 
